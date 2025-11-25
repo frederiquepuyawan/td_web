@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddie Puyawan | Multimedia Student Portfolio</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Define your emerald green accent color */
+        .accent-text { color: #059669; } /* Emerald Green */
+        .accent-bg { background-color: #059669; }
+        .accent-hover:hover { background-color: #047857; }
+        .section-padding { padding: 4rem 1rem; }
+        @media (min-width: 640px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+
+        /* UPDATED: Body now uses a solid white background color */
+        body {
+            background-color: #ffffff; /* White background for the entire page */
+            color: #374151; /* Darker text for better contrast on white */
+            scroll-behavior: smooth; /* Smooth scroll behavior for section anchors */
+        }
+
+        /* IMPORTANT: Removed background-image and gradient from #home */
+        #home {
+            background-image: none; /* No background image */
+            background-color: #f9fafb; /* A very light gray for the home section to give it slight distinction */
+        }
+
+        /* Ensure header and footer remain distinct */
+        header {
+            background-color: #ffffff; /* White header */
+            border-bottom: 1px solid #e5e7eb; /* Subtle border */
+        }
+        footer {
+            background-color: #059669; /* Keep accent color for footer */
+        }
+
+        /* Adjust specific elements for new white background */
+        .text-gray-800 { color: #1f2937; } /* Very dark gray for general text */
+        .text-gray-900 { color: #111827; } /* Even darker for main titles */
+        .text-gray-500 { color: #6b7280; } /* Medium gray for secondary text */
+        .text-gray-700 { color: #374151; } /* Dark gray for general content text */
+        .text-gray-600 { color: #4b5563; } /* Slightly lighter dark gray */
+
+
+        /* Ensure links in header are dark for visibility on white */
+        .header-link { color: #1f2937; }
+        .header-link:hover { color: #059669; } /* Keep accent green on hover */
+
+        /* Override specific text colors for visibility */
+        .text-xl, .text-lg, .text-sm, .text-base { color: #374151; } /* Dark text for all general text sizes */
+
+        /* Ensure the accent text is visible */
+        .accent-text { color: #059669; } /* Revert to the primary emerald green */
+
+        /* Card backgrounds should be solid white for clarity */
+        .bg-white {
+            background-color: #ffffff; /* Solid white for cards */
+            border-color: #e5e7eb; /* Light border for cards */
+        }
+
+        /* Adjust hover effects for cards */
+        .bg-white:hover {
+            background-color: #f9fafb; /* Slight light gray on hover */
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Button adjustments for new background */
+        .shadow-green-400\/50 {
+            box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.4), 0 2px 4px -1px rgba(5, 150, 105, 0.2); /* Adjusted shadow to match primary green */
+        }
+
+        /* Tab button color adjustment */
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-900 { color: #111827; }
+
+    </style>
+
+    <script>
+        // Function to handle tab switching
+        function showWorks(type) {
+            const container2D = document.getElementById('works-2d');
+            const container3D = document.getElementById('works-3d');
+            const tab2D = document.getElementById('tab-2d');
+            const tab3D = document.getElementById('tab-3d');
+
+            if (type === '2d') {
+                container2D.classList.remove('hidden');
+                container3D.classList.add('hidden');
+                tab2D.classList.add('border-b-4', 'accent-text', 'font-semibold', 'border-green-600');
+                tab3D.classList.remove('border-b-4', 'accent-text', 'font-semibold', 'border-green-600');
+            } else if (type === '3d') {
+                container2D.classList.add('hidden');
+                container3D.classList.remove('hidden');
+                tab2D.classList.remove('border-b-4', 'accent-text', 'font-semibold', 'border-green-600');
+                tab3D.classList.add('border-b-4', 'accent-text', 'font-semibold', 'border-green-600');
+            }
+        }
+
+        // Smooth scrolling and initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu after clicking a link
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                });
+            });
+
+            // Mobile menu toggle
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Set initial active tab
+            showWorks('2d');
+        });
+    </script>
+</head>
+
+<body class="min-h-screen">
+
+<!-- Header & Navigation --><header class="sticky top-0 z-50 shadow-md">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <!-- Branding using the custom accent color defined in styles.css --><a href="#home" class="text-2xl font-bold accent-text">Teddie Puyawan</a>
+
+        <!-- Desktop Menu - UPDATED: Added shape frame effect on hover --><div class="hidden md:flex space-x-2 text-lg font-medium">
+        <!-- Added px-3 py-1 rounded-lg border-transparent and hover:border-green-600 --><a href="#home" class="px-3 py-1 rounded-lg border border-transparent header-link transition duration-200 hover:border-green-600 hover:text-green-600">Home</a>
+        <a href="#about" class="px-3 py-1 rounded-lg border border-transparent header-link transition duration-200 hover:border-green-600 hover:text-green-600">About</a>
+        <a href="#skills" class="px-3 py-1 rounded-lg border border-transparent header-link transition duration-200 hover:border-green-600 hover:text-green-600">Skills</a>
+        <a href="#works" class="px-3 py-1 rounded-lg border border-transparent header-link transition duration-200 hover:border-green-600 hover:text-green-600">Works</a>
+        <a href="#contacts" class="px-3 py-1 rounded-lg border border-transparent header-link transition duration-200 hover:border-green-600 hover:text-green-600">Contacts</a>
+    </div>
+
+        <!-- Mobile Menu Button --><button id="menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition duration-200">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+    </button>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden shadow-lg border-t border-gray-100 bg-white">
+    <a href="#home" class="block py-3 px-6 text-base font-medium hover:bg-gray-50 border-b text-gray-800">Home</a>
+    <a href="#about" class="block py-3 px-6 text-base font-medium hover:bg-gray-50 border-b text-gray-800">About</a>
+    <a href="#skills" class="block py-3 px-6 text-base font-medium hover:bg-gray-50 border-b text-gray-800">Skills</a>
+    <a href="#works" class="block py-3 px-6 text-base font-medium hover:bg-gray-50 border-b text-gray-800">Works</a>
+    <a href="#contacts" class="block py-3 px-6 text-base font-medium hover:bg-gray-50 text-gray-800">Contacts</a>
+</div>
+</header>
+
+<!-- 1. Home Section --><section id="home" class="section-padding min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 text-center">
+        <div class="flex flex-col items-center">
+
+            <!-- Profile Picture Container - Placeholder now includes a camera icon (📸 TP) --><div class="w-48 h-48 md:w-64 md:h-64 rounded-full bg-gray-200 mb-6 overflow-hidden shadow-lg border-4 border-gray-100">
+
+            <img src="photo2.jpg" height="1440" width="1440"/>
+        </div>
+
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-4 text-gray-900">
+                Multimedia Student & Creator
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-500 max-w-3xl mb-8">
+                Designing, filming, and editing compelling visual content. Specializing in video production, graphic design, and interactive media.
+            </p>
+            <!-- UPDATED: Added border-2 border-green-700 and shadow-green-400/50 for frame effect --><a href="#works" class="inline-block px-8 py-3 text-lg font-semibold text-white accent-bg rounded-lg shadow-xl transition duration-300 accent-hover transform hover:scale-105
+                        border-2 border-green-700 shadow-green-400/50">
+            View My Works
+        </a>
+        </div>
+    </div>
+</section>
+
+<!-- 2. About Section --><section id="about" class="section-padding border-t border-b">
+    <div class="container mx-auto px-4 max-w-5xl">
+        <h2 class="text-4xl font-bold text-center mb-12 accent-text">About Me</h2>
+        <div class="text-lg text-gray-700 leading-relaxed space-y-6 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+            <p>
+                I am Teddie Puyawan, a dedicated Multimedia Student with a strong focus on digital storytelling and visual communication. I believe in the power of media to inform, entertain, and inspire, and I am constantly honing my skills across the entire production pipeline, I am a passionate multimedia artist with experience in video editing, 3D modeling, and sound design. I possess expertise in crafting captivating visual content and narrating compelling stories for both short films and music videos. Eager to contribute creativity and technical expertise to collaborative media projects.
+            </p>
+            <p>
+                My coursework and personal projects have given me hands-on experience in *video editing, motion graphics, photography, and graphic design.* I am proficient in the Adobe Creative Suite and always eager to learn new tools and techniques to push creative boundaries.
+            </p>
+            <p>
+                I am currently looking for opportunities to apply my creativity and technical skills in a professional setting. Check out my works below!
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Skills Section --><section id="skills" class="section-padding">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 accent-text">Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Video & Motion Graphics --><div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center accent-text">
+                <span class="text-3xl mr-3">🎬</span> Video & Motion Graphics
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+                <li class="flex items-center">Adobe Premiere Pro</li>
+                <li class="flex items-center">Adobe After Effects</li>
+                <li class="flex items-center">CapCut Editing</li>
+                <li class="flex items-center">Color Grading (DaVinci)</li>
+                <li class="flex items-center">Video Production & Filming</li>
+            </ul>
+        </div>
+
+            <!-- Design & Photography --><div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center accent-text">
+                <span class="text-3xl mr-3">🎨</span> Design & Photography
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+                <li class="flex items-center">Adobe Photoshop</li>
+                <li class="flex items-center">Canva</li>
+                <li class="flex items-center">Ibis Paint</li>
+                <li class="flex items-center">Digital Photography</li>
+            </ul>
+        </div>
+
+            <!-- Web & Interactive --><div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 transition duration-300 hover:shadow-xl">
+            <h3 class="text-2xl font-semibold mb-6 flex items-center accent-text">
+                <span class="text-3xl mr-3">🌐</span> Web & Interactive
+            </h3>
+            <ul class="space-y-4 text-gray-700">
+                <li class="flex items-center">HTML5 & CSS3</li>
+                <li class="flex items-center">JavaScript (Basic)</li>
+                <li class="flex items-center">Responsive Web Design</li>
+                <li class="flex items-center">Interactive Media Concepts</li>
+            </ul>
+        </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 4. Works Section (Now Tabbed) --><section id="works" class="section-padding border-t border-b">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-8 accent-text">Featured Works</h2>
+
+        <!-- Tabs/Folders Navigation --><div class="flex justify-center border-b border-gray-200 mb-8">
+        <button id="tab-2d" onclick="showWorks('2d')"
+                class="px-6 py-3 text-lg text-gray-600 transition duration-200 hover:text-gray-900 border-b-4 border-transparent">
+            2D Animation & Design (10)
+        </button>
+        <button id="tab-3d" onclick="showWorks('3d')"
+                class="px-6 py-3 text-lg text-gray-600 transition duration-200 hover:text-gray-900 border-b-4 border-transparent">
+            3D Animation & Modeling (10)
+        </button>
+    </div>
+
+        <!-- 2D Animation & Design Projects --><div id="works-2d" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+        <!-- 2D Project Card 1: Cinematic Short Film -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/1.jpg" height="1920" width="1080"/>
+
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Cinematic Film Poster</h3>
+                <p class="text-gray-600 mb-4 text-sm">This Poster is Design designed by me and also the photographer</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Graphic design</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Canva</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 2: Brand Identity -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/2.png" height="1375" width="2445"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Abandon school</h3>
+                <p class="text-gray-600 mb-4 text-sm">This photo is edited using Adobe photoshop and the photo is taken by me</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Adobe Photoshop</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Photography</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 3: Corporate Explainer Video -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/3.png" height="2246" width="1584"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Theatre Poster</h3>
+                <p class="text-gray-600 mb-4 text-sm">This poster is used for a Play and They post it on social media, As you can see i only use elements for the poster I made to give it a vibe of comedy and drama and also about sexuality</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Canva</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Graphic design</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 4: Event Photography Series -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/4.jpg" height="654" width="1186"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">dark-fantasy, mystical, and epic atmosphere</h3>
+                <p class="text-gray-600 mb-4 text-sm">The image shows three cloaked or armored figures standing on a dark ridge, facing a swirling green vortex of energy in the sky. Above the vortex, a massive, shadowy serpent- or dragon-like face with glowing green eyes looms over them. The sky is filled with dark purples, blacks, and swirling green mist, giving the scene a supernatural, ominous tone.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">2D Drawing</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 5: Product Packaging Design -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/5.jpg" height="2048" width="1969"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Skirk</h3>
+                <p class="text-gray-600 mb-4 text-sm">A Fanart art and the character is from genshin impact.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Picsart</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 6: Podcast Visualizer -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/6.jpg" height="1593" width="1532"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Columbina</h3>
+                <p class="text-gray-600 mb-4 text-sm">A Fanart art and the character is from genshin impact.</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Picsart</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 7: Mobile App UI Design -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/8.jpg" height="2048" width="1969"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Phrolova</h3>
+                <p class="text-gray-600 mb-4 text-sm">FanArt and A Charcter from Wuthering waves</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Picsart</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 8: Typographic Poster Series -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/9.jpg" height="2048" width="1969"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Fleurdelys</h3>
+                <p class="text-gray-600 mb-4 text-sm">FanArt and a Character from Wuthering waves</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Picsart</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 9: Social Media Campaign -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/10.jpeg" height="2048" width="1536"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Character Design</h3>
+                <p class="text-gray-600 mb-4 text-sm">A Character I made for DND( Dungeons and Dragons)</p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Ibis Paint</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Character design</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2D Project Card 10: Environmental Graphic Design -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+            <img src="portfolio/2D/Screenshot (447).png" height="1080" width="1920"/>
+
+            <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-900">Video Editing</h3>
+                <p class="text-gray-600 mb-4 text-sm">A 3D Film I compile and Edited for a short film pattern and also I Did the sound design </p>
+                <div class="flex flex-wrap gap-2 text-xs font-medium">
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Capcut</span>
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Video Editing</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 3D Animation & Modeling Projects (Hidden by Default) -->
+        <div id="works-3d" class="hidden grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+
+            <!-- 3D Project Card 1: Pattern (Existing with corrected placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img class="w-full h-48 object-cover"
+                     src="pattern.jpg"
+
+                     alt="Pattern Poster">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Pattern (3D Short)</h3>
+                    <p class="text-gray-600 mb-4 text-sm">a chamelion boy who embarks his journey to find his true self</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Houdini</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 2: Architectural Visualization (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/New Cookie.png" height="1080" width="1920"/>
+
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">3D model of a Cookie in a Can</h3>
+                    <p class="text-gray-600 mb-4 text-sm">A 3D Project</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Product</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 3: Character Rigging Demo (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Film 3d environment.png" height="1080" width="1920"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">3D Environment for a film</h3>
+                    <p class="text-gray-600 mb-4 text-sm">A Environment made from scatch and used it for our film "Pattern"</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Maya</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Animation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 4: Game Asset Modeling (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Screenshot (3).png" height="1080" width="1920"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Film using Unreal Engine</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Making a Short film using Unreal Engine and assets from Mixamo and Sketchfab.</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Unreal Engine5</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Mixamo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 5: Hard Surface Sci-Fi Scene (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/received_511263741985034.jpeg" height="1080" width="1920"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">3d model Of a selfmade Funkopop but in Hirono style </h3>
+                    <p class="text-gray-600 mb-4 text-sm">Detailed modeling and texturing of a figure </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Picsart</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 6: Product Animation (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Product.png" height="714" width="1447"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Product AD Animation</h3>
+                    <p class="text-gray-600 mb-4 text-sm">360-degree render and exploded view animation for a conceptual consumer electronic device.</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Adobe Premier pro</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 7: VFX Breakdown Reel (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Medieval Weapons_Puyawan.png" height="1080" width="1920"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Medieval Weapon</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Inspired by a medieval after battle where the weapons are scattered on the feild</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Poly Haeven</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 8: Digital Sculpture (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Statue Diorama.png" height="853" width="1522"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Diorama</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Inspired by a weeping angels in an abandon ruins</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">sketchfab</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 9: Procedural Environment (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/environment.png" height="1080" width="1920"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Environment</h3>
+                    <p class="text-gray-600 mb-4 text-sm">A 3D environment using assets</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">3D Modeling</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Environment</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3D Project Card 10: Motion Tracking Test (New Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300 hover:shadow-2xl">
+                <img src="portfolio/3D/Tracking.png" height="499" width="834"/>
+
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Motion Tracking</h3>
+                    <p class="text-gray-600 mb-4 text-sm">3D model tacking on a captured video</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium">
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Blender</span>
+                        <span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Tracking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 5. Contact Section -->
+<section id="contacts" class="section-padding bg-gray-50">
+    <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-4xl font-bold text-center mb-6 accent-text">Get In Touch</h2>
+        <p class="text-center text-xl text-gray-700 mb-10">
+            Ready to collaborate on a project? I'm always open to discussing new ideas.
+        </p>
+
+        <form class="space-y-6 bg-white p-8 rounded-xl shadow-xl border border-gray-200">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150" placeholder="Your Name">
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150" placeholder="your.email@example.com">
+            </div>
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500 transition duration-150" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="w-full px-6 py-3 text-lg font-semibold text-white accent-bg rounded-lg shadow-lg transition duration-300 accent-hover transform hover:scale-[1.01]
+                        border-2 border-green-700 shadow-green-400/50">
+                Send Message
+            </button>
+        </form>
+
+        <div class="mt-12 text-center text-gray-600">
+            <p>
+                Connect with me directly: <a href="mailto:frederiquepuyawan01@gmail.com" class="accent-text font-medium hover:underline">frederiquepuyawan01@gmail.com</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="accent-bg text-white py-6">
+    <div class="container mx-auto px-4 text-center">
+        <p class="text-sm">&copy; 2024 Teddie Puyawan. All rights reserved. | Built with Tailwind CSS.</p>
+    </div>
+</footer>
+</body>
+</html>
